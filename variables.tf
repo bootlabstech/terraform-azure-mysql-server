@@ -2,7 +2,10 @@ variable "resource_group_name" {
   type        = string
   description = "the resource group where the VMs will be created"
 }
-
+variable "vnet_resource_group_name" {
+  type        = string
+  description = "the resource group where the VMs will be created"
+}
 variable "location" {
   type        = string
   description = "the location where the resource group is present"
@@ -27,3 +30,4 @@ variable "mysql_servers_configuration" {
     subnet_id                         = string,
   }))
 }
+

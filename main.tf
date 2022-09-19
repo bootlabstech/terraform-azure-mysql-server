@@ -68,7 +68,7 @@ resource "azurerm_private_dns_zone" "mysql_dns_zone" {
 data "azurerm_virtual_network" "vnet_data" {
   for_each            = toset(var.mysql_servers_configuration[*].vnet_name)
   name                = each.key
-  resource_group_name = var.resource_group_name
+  resource_group_name = var.vnet_resource_group_name
 }
 
 resource "azurerm_private_dns_zone_virtual_network_link" "mysql_vnet_link" {
