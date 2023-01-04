@@ -62,43 +62,43 @@ data "azurerm_virtual_network" "vnet_data" {
   resource_group_name = var.vnet_resource_group_name
 }
 
-resource "azurerm_private_dns_zone_virtual_network_link" "mysql_vnet_link" {
-  name                  = "${var.mysql_server_name}-link"
-  resource_group_name   = var.resource_group_name
-  private_dns_zone_name = azurerm_private_dns_zone.mysql_dns_zone[0].name
-  virtual_network_id    = data.azurerm_virtual_network.vnet_data.id
+# resource "azurerm_private_dns_zone_virtual_network_link" "mysql_vnet_link" {
+#   name                  = "${var.mysql_server_name}-link"
+#   resource_group_name   = var.resource_group_name
+#   private_dns_zone_name = azurerm_private_dns_zone.mysql_dns_zone[0].name
+#   virtual_network_id    = data.azurerm_virtual_network.vnet_data.id
 
-  lifecycle {
-    ignore_changes = [
-      tags,
-    ]
-  }
-}
+#   lifecycle {
+#     ignore_changes = [
+#       tags,
+#     ]
+#   }
+# }
 
-resource "azurerm_private_endpoint" "mysql_endpoint" {
-  name                = "${var.mysql_server_name}-${random_string.mysql_server_suffix.id}-endpoint"
-  location            = var.location
-  resource_group_name = var.resource_group_name
-  subnet_id           = var.subnet_id
+# resource "azurerm_private_endpoint" "mysql_endpoint" {
+#   name                = "${var.mysql_server_name}-${random_string.mysql_server_suffix.id}-endpoint"
+#   location            = var.location
+#   resource_group_name = var.resource_group_name
+#   subnet_id           = var.subnet_id
 
-  private_service_connection {
-    name                           = "${var.mysql_server_name}-${random_string.mysql_server_suffix.id}-privateserviceconnection"
-    private_connection_resource_id = azurerm_mysql_server.mysql_server.id
-    is_manual_connection           = false
-    subresource_names              = ["mysqlServer"]
-  }
+#   private_service_connection {
+#     name                           = "${var.mysql_server_name}-${random_string.mysql_server_suffix.id}-privateserviceconnection"
+#     private_connection_resource_id = azurerm_mysql_server.mysql_server.id
+#     is_manual_connection           = false
+#     subresource_names              = ["mysqlServer"]
+#   }
 
-  lifecycle {
-    ignore_changes = [
-      tags,
-    ]
-  }
-}
+#   lifecycle {
+#     ignore_changes = [
+#       tags,
+#     ]
+#   }
+# }
 
-resource "azurerm_private_dns_a_record" "mysql_record" {
-  name                = "${var.mysql_server_name}-${random_string.mysql_server_suffix.id}"
-  zone_name           = azurerm_private_dns_zone.mysql_dns_zone[0].name
-  resource_group_name = var.resource_group_name
-  ttl                 = 300
-  records             = [azurerm_private_endpoint.mysql_endpoint.private_service_connection[0].private_ip_address]
-}
+# resource "azurerm_private_dns_a_record" "mysql_record" {
+#   name                = "${var.mysql_server_name}-${random_string.mysql_server_suffix.id}"
+#   zone_name           = azurerm_private_dns_zone.mysql_dns_zone[0].name
+#   resource_group_name = var.resource_group_name
+#   ttl                 = 300
+#   records             = [azurerm_private_endpoint.mysql_endpoint.private_service_connection[0].private_ip_address]
+# }
