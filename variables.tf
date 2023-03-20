@@ -22,11 +22,6 @@ variable "name" {
   description = "The name of vnet"
 }
 
-variable "subnet_id" {
-  type        = string
-  description = "The self link of subnet"
-}
-
 variable "administrator_login" {
   type        = string
   description = "(optional) describe your variable"
