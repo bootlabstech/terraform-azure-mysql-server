@@ -45,6 +45,7 @@ variable "storage_mb" {
 variable "mysql_version" {
   type        = string
   description = "(optional) describe your variable"
+  default = "8.0"
 }
 
 variable "auto_grow_enabled" {
