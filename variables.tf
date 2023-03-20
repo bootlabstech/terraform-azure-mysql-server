@@ -2,10 +2,10 @@ variable "resource_group_name" {
   type        = string
   description = "the resource group where the VMs will be created"
 }
-variable "vnet_resource_group_name" {
-  type        = string
-  description = "the resource group where the VMs will be created"
-}
+# variable "vnet_resource_group_name" {
+#   type        = string
+#   description = "the resource group where the VMs will be created"
+# }
 variable "location" {
   type        = string
   description = "the location where the resource group is present"
@@ -17,7 +17,7 @@ variable "mysql_server_name" {
   description = "Specifies the name of the MySQL Server. Changing this forces a new resource to be created. This needs to be globally unique within Azure."
 }
 
-variable "vnet_name" {
+variable "name" {
   type        = string
   description = "The name of vnet"
 }
