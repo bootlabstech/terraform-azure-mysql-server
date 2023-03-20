@@ -12,11 +12,6 @@ variable "location" {
 }
 
 
-variable "mysql_server_name" {
-  type        = string
-  description = "Specifies the name of the MySQL Server. Changing this forces a new resource to be created. This needs to be globally unique within Azure."
-}
-
 variable "name" {
   type        = string
   description = "The name of vnet"
