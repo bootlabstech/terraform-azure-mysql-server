@@ -65,7 +65,7 @@ variable "infrastructure_encryption_enabled" {
 variable "public_network_access_enabled" {
   type        = bool
   description = "Whether or not public network access is allowed for this server. Defaults to true."
-  default     = false
+  default     = true
 }
 
 variable "ssl_enforcement_enabled" {
