@@ -71,13 +71,13 @@ variable "public_network_access_enabled" {
 variable "ssl_enforcement_enabled" {
   type        = bool
   description = "Specifies if SSL should be enforced on connections. Possible values are true and false"
-  default     = true
+
 }
 
 variable "ssl_minimal_tls_version_enforced" {
   type        = string
   description = "The minimum TLS version to support on the sever. Possible values are TLSEnforcementDisabled, TLS1_0, TLS1_1, and TLS1_2. Defaults to TLS1_2."
-  default     = "TLS1_2"
+
 }
 
 

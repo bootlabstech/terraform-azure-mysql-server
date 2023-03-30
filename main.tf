@@ -1,6 +1,4 @@
-terraform {
-  experiments = [module_variable_optional_attrs]
-}
+
 
 resource "random_string" "mysql_server_suffix" {
   length   = 8
