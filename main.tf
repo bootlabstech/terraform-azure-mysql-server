@@ -43,6 +43,14 @@ resource "azurerm_mysql_server" "mysql_server" {
   }
 }
 
+resource "azurerm_mysql_firewall_rule" "example" {
+  name                = "office"
+  resource_group_name = azurerm_mysql_server.mysql_server.resource_group_name
+  server_name         = azurerm_mysql_server.mysql_server.name
+  start_ip_address    = "0.0.0.0"
+  end_ip_address      = "0.0.0.0"
+}
+
 # resource "azurerm_private_dns_zone" "mysql_dns_zone" {
 #   count               = length(var.mysql_server_name) > 0 ? 1 : 0
 #   name                = "privatelink.mysql.database.azure.com"
